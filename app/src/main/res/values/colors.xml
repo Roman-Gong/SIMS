@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3680f5</color>
+    <color name="colorPrimaryDark">#276dde</color>
+    <color name="colorAccent">#f5a957</color>
+
+    <color name="tabtext">#b7b6b6</color>
+    <color name="course_left_bg">#e6ebeaea</color>
+    <color name="ColorWhite">#ffffff</color>
+    <color name="colorLightBlue">#abe0ff</color>
+    <color name="colorGray">#cecece</color>
+    <color name="colorBlue">#2791f4</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorRed">#fa1111</color>
+    <color name="colorOrange">#ff8121</color>
+    <color name="colorgreen">#30ce05</color>
+    <color name="colorLightBlack">#222222</color>
+    <color name="title_color">#259b24</color>
+    <color name="colorDark">#848383</color>
+    <color name="lightGray">#ececec</color>
+    <color name="colorYellow">#e9d423</color>
+    <color name="course_info_title">#333333</color>
+    <color name="course_info_text">#666666</color>
+    <color name="text_remind">#47a3d1</color>
+    <color name="course_info_title_remind">#fafafa</color>
+    <color name="course_info_text_remind">#f4f4f4</color>
+    <color name="courseTextColor" >#ECECEC</color>
+    <color name="bar">#64a8b9</color>
+    <color name="text">#3299cc</color>
+    <color name="div_color">#dfe0e1</color>
+    <color name="delete">#ef9a9a</color>
+    <color name="delete_unenable">#d8d8d8</color>
+    <color name="classIndex" >#16000000</color>
+    <color name="transparent">#00ffffff</color> //透明
+    <color name="toast_bg_loading">#50000000</color>  //半透明
+
+</resources>
