@@ -1,9 +1,11 @@
 package com.gongyunhao.sims.Activity;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.gongyunhao.sims.AddStudentActivity;
 import com.gongyunhao.sims.Bean.StudentBean;
 import com.gongyunhao.sims.R;
 import com.gongyunhao.sims.Utils.FileHelper;

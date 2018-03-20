@@ -9,7 +9,6 @@ import com.gongyunhao.sims.Bean.StudentBean;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -18,19 +17,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 //    ┏┓　   ┏┓
-// ┏━━┛┻━━━━━┛┻ ┓ 
-// ┃　　　　　　 ┃  
-// ┃　　　━　    ┃  
-// ┃　＞　　＜　 ┃  
-// ┃　　　　　　 ┃  
-// ┃... ⌒ ...  ┃  
-// ┃　　　　　 　┃  
-// ┗━━━┓　　　┏━┛  
-//     ┃　　　┃　  
-//     ┃　　　┃  
-//     ┃　　　┃  神兽保佑  
-//     ┃　　　┃  代码无bug　　  
-//     ┃　　　┃  
+// ┏━━┛┻━━━━━┛┻ ┓
+// ┃　　　　　　 ┃
+// ┃　　　━　    ┃
+// ┃　＞　　＜　 ┃
+// ┃　　　　　　 ┃
+// ┃... ⌒ ...  ┃
+// ┃　　　　　 　┃
+// ┗━━━┓　　　┏━┛
+//     ┃　　　┃　
+//     ┃　　　┃
+//     ┃　　　┃  神兽保佑
+//     ┃　　　┃  代码无bug　　
+//     ┃　　　┃
 //     ┃　　　┗━━━━━━━━━┓
 //     ┃　　　　　　　    ┣┓
 //     ┃　　　　         ┏┛
@@ -42,7 +41,7 @@ import java.util.List;
 //  來源：简书
 //
 //  Creste by GongYunHao on 2018/3/19
-// 
+//
 public class FileHelper {
     private String STUDENT_DATA="studentData";//学生信息存储文件夹名
     private String LIKE_DATA="likeData";//学号对应的喜欢的情趣项的文件名
@@ -135,12 +134,12 @@ public class FileHelper {
         for (int i=0;i<studentBeanList.size();i++){
             StudentBean studentBean=studentBeanList.get( i );
             if (i<studentBeanList.size()-1){
-                datamydata=datamydata+studentBean.getName()+" "+studentBean.getSex()+" "+
-                        studentBean.getGrade()+" "+studentBean.getIDnumber()+" "+
-                        studentBean.getMajor()+"\n";
+                datamydata=datamydata+studentBean.getStudentName()+" "+studentBean.getStudentSex()+" "+
+                        studentBean.getStudentGrade()+" "+studentBean.getStudentNumber()+" "+
+                        studentBean.getStudentMajor()+"\n";
             }else {
-                datamydata=datamydata+studentBean.getName()+" "+studentBean.getSex()+" "+
-                        studentBean.getGrade()+" "+studentBean.getIDnumber()+" "+studentBean.getMajor();
+                datamydata=datamydata+studentBean.getStudentName()+" "+studentBean.getStudentSex()+" "+
+                        studentBean.getStudentGrade()+" "+studentBean.getStudentNumber()+" "+studentBean.getStudentMajor();
             }
         }
 //        //json格式存储
