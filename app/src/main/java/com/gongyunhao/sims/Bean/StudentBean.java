@@ -28,58 +28,60 @@ package com.gongyunhao.sims.Bean;
 // 
 public class StudentBean {
 
-    private String name;           //姓名
-    private int sex;               //性别,0表示女,1表示男
-    private String grade;          //年级
-    private String IDnumber;       //学号
-    private String major;          //专业
+    public StudentBean next = null;
 
-    public StudentBean(String name, int sex, String grade, String IDnumber, String major) {
-        this.name = name;
-        this.sex = sex;
-        this.grade = grade;
-        this.IDnumber = IDnumber;
-        this.major = major;
+    private String studentName;           //姓名
+    private int studentSex;               //性别,0表示女,1表示男
+    private String studentGrade;          //年级
+    private String studentNumber;       //学号
+    private String studentMajor;          //专业
+
+    public StudentBean(String studentName, int studentSex, String studentGrade, String studentNumber, String studentMajor) {
+        this.studentName = studentNumber;
+        this.studentSex = studentSex;
+        this.studentGrade = studentGrade;
+        this.studentNumber = studentNumber;
+        this.studentMajor = studentMajor;
     }
 
-    public String getName() {
+    public String getStudentName() {
 
-        return name;
+        return studentName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setStudentName(String name) {
+        this.studentName = name;
     }
 
-    public int getSex() {
-        return sex;
+    public int getStudentSex() {
+        return studentSex;
     }
 
-    public void setSex(int sex) {
-        this.sex = sex;
+    public void setStudentSex(int sex) {
+        this.studentSex = sex;
     }
 
-    public String getGrade() {
-        return grade;
+    public String getStudentGrade() {
+        return studentGrade;
     }
 
-    public void setGrade(String grade) {
-        this.grade = grade;
+    public void setStudentGrade(String grade) {
+        this.studentGrade = grade;
     }
 
-    public String getIDnumber() {
-        return IDnumber;
+    public String getStudentNumber() {
+        return studentNumber;
     }
 
-    public void setIDnumber(String IDnumber) {
-        this.IDnumber = IDnumber;
+    public void setStudentNumber(String IDnumber) {
+        this.studentNumber = IDnumber;
     }
 
-    public String getMajor() {
-        return major;
+    public String getStudentMajor() {
+        return studentMajor;
     }
 
-    public void setMajor(String major) {
-        this.major = major;
+    public void setStudentMajor(String major) {
+        this.studentMajor = major;
     }
 }
