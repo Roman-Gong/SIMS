@@ -1,4 +1,4 @@
-package com.gongyunhao.sims;
+package com.gongyunhao.sims.Activity;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import com.gongyunhao.sims.R;
 
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
