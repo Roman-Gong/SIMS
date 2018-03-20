@@ -1,6 +1,7 @@
 package com.gongyunhao.sims.Utils;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.gongyunhao.sims.Bean.StudentBean;
@@ -63,7 +64,8 @@ public class FileHelper {
             reader=new BufferedReader( new InputStreamReader( inputStream ) );
             String line="";
             while ((line=reader.readLine())!=null){
-                content.append( line );
+                String str = line + "\r\n";//手动换行，便于下面的分割。
+                content.append( str );
             }
         } catch (IOException e) {
             e.printStackTrace( );
@@ -78,6 +80,11 @@ public class FileHelper {
         }
         //此处content已经被还原成存储时的String格式,然后可以进行分割存入List中。
         String studentdatastr=content.toString();
+        if (studentdatastr.length()<3){
+            TextUtils.isEmpty( studentdatastr );
+            return null;
+        }
+        Log.d( "readstudent--------->",studentdatastr );
         String[] studentdatadetail=studentdatastr.split( "\n" );
         List<StudentBean> studentBeans=new ArrayList<>(  );
         for (int j=0;j<studentdatadetail.length;j++){
@@ -101,7 +108,7 @@ public class FileHelper {
         FileOutputStream outputStream=null;
         BufferedWriter writer=null;
         try {
-            outputStream=context.openFileOutput( STUDENT_DATA, Context.MODE_PRIVATE );
+            outputStream=context.openFileOutput( STUDENT_DATA, Context.MODE_PRIVATE );//覆盖模式
             writer=new BufferedWriter( new OutputStreamWriter( outputStream ) );
             String studentdata =parseStudentBeanToSave( mlist );
             writer.write( studentdata );
@@ -124,7 +131,7 @@ public class FileHelper {
 //        grade;
 //        IDnumber;
 //        major;
-        String datamydata =null;
+        String datamydata ="";
         for (int i=0;i<studentBeanList.size();i++){
             StudentBean studentBean=studentBeanList.get( i );
             if (i<studentBeanList.size()-1){
@@ -141,7 +148,7 @@ public class FileHelper {
 //                msbean.getSex()+"\",\"grade\":\""+msbean.getGrade()+"\",\"IDnumber\":\""+
 //                msbean.getIDnumber()+"\",\"major\":\""+msbean.getMajor()+"\"}";
 
-        Log.d( "studentdata---------->",datamydata );
+        Log.d( "savestudent---------->",datamydata );
         return datamydata;
     }
 
