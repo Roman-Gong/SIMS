@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.gongyunhao.sims.AddStudentActivity">
+
+    <EditText
+        android:id="@+id/et_add_student"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="姓名"/>
+    <RadioGroup
+        android:id="@+id/radio_add_sex"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radio_boy"
+            android:text="男"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <RadioButton
+            android:id="@+id/radio_girl"
+            android:text="女"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RadioGroup>
+    <EditText
+        android:id="@+id/et_add_grade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="年级"/>
+    <EditText
+        android:id="@+id/et_add_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="学号"/>
+    <EditText
+        android:id="@+id/et_add_major"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="专业"/>
+
+    <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:id="@+id/recycler_add_interest"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+        <!---->
+    <!--</android.support.v7.widget.RecyclerView>-->
+
+    <Button
+        android:id="@+id/btn_add_yes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="添加"/>
+
+</LinearLayout>

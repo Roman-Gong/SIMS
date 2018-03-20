@@ -1,26 +1,21 @@
-package com.gongyunhao.sims;
+package com.gongyunhao.sims.Activity;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
+import com.gongyunhao.sims.R;
 
 //    ┏┓　   ┏┓
 // ┏━━┛┻━━━━━┛┻ ┓ 
@@ -126,21 +121,6 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     public int dp2px(int dp) {
         return (int) TypedValue.applyDimension( TypedValue.COMPLEX_UNIT_DIP, dp,
                 mthis.getResources().getDisplayMetrics());
-    }
-
-    /**
-     *
-     */
-    public String[] getUserData(){
-        SharedPreferences userdate=getSharedPreferences( "userdata",MODE_PRIVATE );
-        String[] uddt=userdate.getString( "getuserdata","" ).split( "," );
-        return uddt;
-    }
-
-    protected void hideStatusBar() {
-        int flag = WindowManager.LayoutParams.FLAG_FULLSCREEN;//隐藏状态栏, 定义全屏参数
-        Window window = getWindow(); //获得当前窗体对象
-        window.setFlags(flag, flag);//设置当前窗体为全屏显示
     }
 
     public void initTitle(){

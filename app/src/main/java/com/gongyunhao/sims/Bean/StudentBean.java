@@ -29,12 +29,12 @@ package com.gongyunhao.sims.Bean;
 public class StudentBean {
 
     private String name;           //姓名
-    private boolean sex;           //性别
+    private int sex;               //性别,0表示女,1表示男
     private String grade;          //年级
     private String IDnumber;       //学号
     private String major;          //专业
 
-    public StudentBean(String name, boolean sex, String grade, String IDnumber, String major) {
+    public StudentBean(String name, int sex, String grade, String IDnumber, String major) {
         this.name = name;
         this.sex = sex;
         this.grade = grade;
@@ -51,11 +51,11 @@ public class StudentBean {
         this.name = name;
     }
 
-    public boolean isSex() {
+    public int getSex() {
         return sex;
     }
 
-    public void setSex(boolean sex) {
+    public void setSex(int sex) {
         this.sex = sex;
     }
 
