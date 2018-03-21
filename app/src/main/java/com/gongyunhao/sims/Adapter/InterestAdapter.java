@@ -50,6 +50,8 @@ public class InterestAdapter extends RecyclerView.Adapter<InterestAdapter.ViewHo
         return 0;
     }
 
+
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ViewHolder(View itemView) {
             super( itemView );

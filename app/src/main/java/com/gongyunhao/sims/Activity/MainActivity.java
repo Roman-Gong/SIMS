@@ -1,11 +1,13 @@
 package com.gongyunhao.sims.Activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
 import com.gongyunhao.sims.AddStudentActivity;
+import com.gongyunhao.sims.ArrayList.InterestIdAndInterestNameAndInterestCategoryIdBeanList;
+import com.gongyunhao.sims.ArrayList.StudentAndInterestBeanList;
+import com.gongyunhao.sims.ArrayList.StudentBeanList;
 import com.gongyunhao.sims.Bean.StudentBean;
 import com.gongyunhao.sims.R;
 import com.gongyunhao.sims.Utils.FileHelper;
@@ -72,6 +74,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 break;
         }
     }
+
     @Override
     public void initViews() {
         addstudent=findViewById( R.id.btn_add_student );
@@ -82,6 +85,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         modifyinterest=findViewById( R.id.btn_modify_interest );
         searchstudent=findViewById( R.id.btn_search_student );
     }
+
     @Override
     public void initListeners() {
         addstudent.setOnClickListener( this );
@@ -92,8 +96,42 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         modifyinterest.setOnClickListener( this );
         searchstudent.setOnClickListener( this );
     }
+
     @Override
     public void initData() {
+
+    }
+
+    public void searchByStudentName(String studentName){
+
+        StudentBeanList studentBeanList = new StudentBeanList();
+        int tempIndex = studentBeanList.findStudentBeanListByStudentName(studentName);
+        StudentBean studentBean = studentBeanList.getStudentBean(tempIndex);
+
+
+    }
+
+    public void searchByStudentNumber(String studentNumber){
+
+        StudentBeanList studentBeanList = new StudentBeanList();
+        int tempIndex = studentBeanList.findStudentBeanListByStudentNumber(studentNumber);
+        StudentBean studentBean = studentBeanList.getStudentBean(tempIndex);
+
+    }
+
+    public void searchByInterestName(String interestName){
+
+        StudentBeanList studentBeanList = new StudentBeanList();
+        StudentAndInterestBeanList studentAndInterestBeanList = new StudentAndInterestBeanList();
+        InterestIdAndInterestNameAndInterestCategoryIdBeanList interestIdAndInterestNameAndInterestCategoryIdBeanList = new InterestIdAndInterestNameAndInterestCategoryIdBeanList();
+        int tempInterestId = interestIdAndInterestNameAndInterestCategoryIdBeanList.getInterestId(interestName);
+        String []tempStudentNumbers = studentAndInterestBeanList.findByStudentInterestId(tempInterestId);
+        for (int i=0;i<tempStudentNumbers.length;i++){
+
+            int tempIndex = studentBeanList.findStudentBeanListByStudentNumber(tempStudentNumbers[i]);
+            StudentBean studentBean = studentBeanList.getStudentBean(tempIndex);
+
+        }
 
     }
 }

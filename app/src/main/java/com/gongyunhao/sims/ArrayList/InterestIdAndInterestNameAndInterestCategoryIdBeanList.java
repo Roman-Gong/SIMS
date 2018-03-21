@@ -40,6 +40,43 @@ public class InterestIdAndInterestNameAndInterestCategoryIdBeanList {
     }
 
     //通过兴趣id找兴趣名
+    public String getInterestName(int interestsId){
+
+        if (head.getInterestId()==interestsId){
+            return head.getInterestName();
+        }
+        InterestIdAndInterestNameAndInterestCategoryIdBean curInterestIdAndInterestNameAndInterestCatergory = head.next;
+        while(curInterestIdAndInterestNameAndInterestCatergory!=null){
+
+            if (curInterestIdAndInterestNameAndInterestCatergory.getInterestId()==interestsId){
+                return curInterestIdAndInterestNameAndInterestCatergory.getInterestName();
+            }
+
+            curInterestIdAndInterestNameAndInterestCatergory = curInterestIdAndInterestNameAndInterestCatergory.next;
+
+
+        }
+        return null;
+    }
+
+    public int getInterestId(String interestName){
+
+        if(head.getInterestName().equals(interestName)){
+            return head.getInterestId();
+        }
+        InterestIdAndInterestNameAndInterestCategoryIdBean curInterestIdAndInterestNameAndInterestCatergory = head.next;
+        while(curInterestIdAndInterestNameAndInterestCatergory!=null){
+
+            if (curInterestIdAndInterestNameAndInterestCatergory.getInterestName().equals(interestName)){
+                return curInterestIdAndInterestNameAndInterestCatergory.getInterestId();
+            }
+
+            curInterestIdAndInterestNameAndInterestCatergory = curInterestIdAndInterestNameAndInterestCatergory.next;
+        }
+
+        return 0;
+
+    }
 
     public boolean setInterestId(int index,int studentInterestId){
 
