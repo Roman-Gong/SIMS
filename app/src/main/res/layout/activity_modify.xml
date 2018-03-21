@@ -55,10 +55,15 @@
         android:layout_below="@+id/et_modify_number"
         android:hint="专业"/>
 
-    <TextView
-        android:id="@+id/textview_spinner"
+    <com.gongyunhao.sims.FlowLayout
+        android:id="@+id/flowlayout"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@id/et_modify_major"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content">
+
+    </com.gongyunhao.sims.FlowLayout>
 
     <Spinner
         android:layout_marginTop="6dp"
@@ -67,7 +72,7 @@
         android:id="@+id/spinner_modify_interest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/et_modify_major">
+        android:layout_below="@id/flowlayout">
 
     </Spinner>
 
