@@ -17,23 +17,23 @@ public class InterestIdAndInterestNameAndInterestCategoryIdBean {
 
     public InterestIdAndInterestNameAndInterestCategoryIdBean next = null;
 
-    private int interestId;
+    private String interestId;
 
     private String interestName;
 
-    private int interestCategoryId;
+    private String interestCategoryId;
 
-    public InterestIdAndInterestNameAndInterestCategoryIdBean(int interestId, String interestName, int interestCategoryId){
+    public InterestIdAndInterestNameAndInterestCategoryIdBean(String interestId, String interestName, String interestCategoryId){
         this.interestId = interestId;
         this.interestName = interestName;
         this.interestCategoryId = interestCategoryId;
     }
 
-    public void setInterestId(int interestId){
+    public void setInterestId(String interestId){
         this.interestId = interestId;
     }
 
-    public void setInterestCategoryId(int interestCategoryId){
+    public void setInterestCategoryId(String interestCategoryId){
         this.interestCategoryId = interestCategoryId;
     }
 
@@ -41,11 +41,11 @@ public class InterestIdAndInterestNameAndInterestCategoryIdBean {
         this.interestName = interestName;
     }
 
-    public int getInterestId(){
+    public String getInterestId(){
         return interestId;
     }
 
-    public int getInterestCategoryId(){
+    public String getInterestCategoryId(){
         return interestCategoryId;
     }
 

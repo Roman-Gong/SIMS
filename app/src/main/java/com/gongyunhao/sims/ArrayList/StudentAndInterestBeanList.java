@@ -20,7 +20,7 @@ public class StudentAndInterestBeanList {
 
     StudentAndInterestBean head = null;
 
-    public void addStudentAndInterestBean (String studentNumber,int interestId){
+    public void addStudentAndInterestBean (String studentNumber,String interestId){
 
         StudentAndInterestBean studentAndInterestBean = new StudentAndInterestBean(studentNumber, interestId);
 
@@ -38,30 +38,30 @@ public class StudentAndInterestBeanList {
 
     }
 
-    public int[] findByStudentNumber(String studentNumber){
+//    public int[] findByStudentNumber(String studentNumber){
 
-        int interests[] = new int[50];
+//        int interests[] = new int[50];
+//
+//        int index = 0;
+//
+//        if (head.getStudentNumber().equals(studentNumber)){
+//            interests[index] = head.getInterestId();
+//            index++;
+//        }
+//
+//        StudentAndInterestBean curStudentAndInterestBean = head.next;
+//
+//        while(curStudentAndInterestBean != null){
+//            if (curStudentAndInterestBean.getStudentNumber().equals(studentNumber)){
+//                interests[index] = head.getInterestId();
+//                index++;
+//            }
+//        }
+//        return interests;
 
-        int index = 0;
+//    }
 
-        if (head.getStudentNumber().equals(studentNumber)){
-            interests[index] = head.getInterestId();
-            index++;
-        }
-
-        StudentAndInterestBean curStudentAndInterestBean = head.next;
-
-        while(curStudentAndInterestBean != null){
-            if (curStudentAndInterestBean.getStudentNumber().equals(studentNumber)){
-                interests[index] = head.getInterestId();
-                index++;
-            }
-        }
-        return interests;
-
-    }
-
-    public String[] findByStudentInterestId(int interestId){
+    public String[] findByStudentInterestId(String interestId){
 
         String studentNumber[] = new String[50];
 
@@ -84,7 +84,7 @@ public class StudentAndInterestBeanList {
 
     }
 
-    public boolean setStudentInterestId(int index,int studentInterestId){
+    public boolean setStudentInterestId(int index,String studentInterestId){
 
         if(index<1||index>length()){
             return false;

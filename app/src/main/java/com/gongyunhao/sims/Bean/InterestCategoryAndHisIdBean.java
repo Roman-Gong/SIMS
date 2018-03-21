@@ -19,18 +19,18 @@ public class InterestCategoryAndHisIdBean {
 
     private String interestCategoryName;
 
-    private int interestCategoryId;
+    private String interestCategoryId;
 
-    public InterestCategoryAndHisIdBean(int interestCategoryId,String interestCategoryName){
+    public InterestCategoryAndHisIdBean(String interestCategoryId,String interestCategoryName){
         this.interestCategoryName = interestCategoryName;
         this.interestCategoryId = interestCategoryId;
     }
 
-    public int getInterestCategoryId(){
+    public String getInterestCategoryId(){
         return interestCategoryId;
     }
 
-    public void setInterestCategoryId(int interestCategoryId){
+    public void setInterestCategoryId(String interestCategoryId){
         this.interestCategoryId = interestCategoryId;
     }
 

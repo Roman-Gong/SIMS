@@ -23,9 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener{
-    private Button deletestudent,searchstudent,modifystudent;
-    private Button addinterest,deleteinterest,modifyinterest;
-    private FloatingActionButton addstudent;
+    private Button deleteinterest,modifyinterest;
+    private FloatingActionButton addstudent,addinterest;
     private List<StudentBean> mStudentList=new ArrayList<>(  );
     private RecyclerView mStudentRecycler;
     private StudentDataAdapter studentDataAdapter;
@@ -101,24 +100,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 startIntent( AddStudentActivity.class );
                 break;
             case R.id.btn_add_interest:
-                break;
-            case R.id.btn_delete_student:
-                if (mStudentList.size()<1){
-                    showToast( "list长度为0，再删就到-1，越界了" );
-                }else {
-                    mStudentList.remove( mStudentList.size()-1 );
-                    FileHelper fileHelper=new FileHelper();
-                    fileHelper.saveStudentDataToFile( MainActivity.this,mStudentList );
-                    showToast( "删除最后一个学生成功" );
-                }
+                startIntent( AddInterestActivity.class );
                 break;
             case R.id.btn_delete_interest:
                 break;
-            case R.id.btn_modify_student:
-                break;
             case R.id.btn_modify_interest:
-                break;
-            case R.id.btn_search_student:
                 break;
             default:
                 break;
@@ -129,11 +115,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     public void initViews() {
         addstudent=findViewById( R.id.btn_add_student );
         addinterest=findViewById( R.id.btn_add_interest );
-        deletestudent=findViewById( R.id.btn_delete_student );
         deleteinterest=findViewById( R.id.btn_delete_interest );
-        modifystudent=findViewById( R.id.btn_modify_student );
         modifyinterest=findViewById( R.id.btn_modify_interest );
-        searchstudent=findViewById( R.id.btn_search_student );
         mStudentRecycler = findViewById(R.id.recycler_student_data);
         mStudentRecycler.setLayoutManager( new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL) );
     }
@@ -142,11 +125,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     public void initListeners() {
         addstudent.setOnClickListener( this );
         addinterest.setOnClickListener( this );
-        deletestudent.setOnClickListener( this );
         deleteinterest.setOnClickListener( this );
-        modifystudent.setOnClickListener( this );
         modifyinterest.setOnClickListener( this );
-        searchstudent.setOnClickListener( this );
     }
 
     @Override
@@ -176,7 +156,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         StudentBeanList studentBeanList = new StudentBeanList();
         StudentAndInterestBeanList studentAndInterestBeanList = new StudentAndInterestBeanList();
         InterestIdAndInterestNameAndInterestCategoryIdBeanList interestIdAndInterestNameAndInterestCategoryIdBeanList = new InterestIdAndInterestNameAndInterestCategoryIdBeanList();
-        int tempInterestId = interestIdAndInterestNameAndInterestCategoryIdBeanList.getInterestId(interestName);
+        String tempInterestId = interestIdAndInterestNameAndInterestCategoryIdBeanList.getInterestId(interestName);
         String []tempStudentNumbers = studentAndInterestBeanList.findByStudentInterestId(tempInterestId);
         for (int i=0;i<tempStudentNumbers.length;i++){
 
