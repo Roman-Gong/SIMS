@@ -6,6 +6,7 @@
     android:background="@color/colorPrimary">
 
         <ImageView
+            android:id="@+id/search"
             android:src="@drawable/ic_search_white_24dp"
             android:layout_marginRight="15dp"
             android:layout_alignParentRight="true"

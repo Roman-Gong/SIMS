@@ -20,7 +20,7 @@ public class StudentAndInterestBeanList {
 
     StudentAndInterestBean head = null;
 
-    public void addStudentAndInterestBean (String studentNumber,int interestId){
+    public void addStudentAndInterestBean (String studentNumber,String interestId){
 
         StudentAndInterestBean studentAndInterestBean = new StudentAndInterestBean(studentNumber, interestId);
 
@@ -38,9 +38,9 @@ public class StudentAndInterestBeanList {
 
     }
 
-    public int[] findByStudentNumber(String studentNumber){
+    public String[] findByStudentNumber(String studentNumber){
 
-        int interests[] = new int[50];
+        String interests[] = new String[50];
 
         int index = 0;
 
@@ -61,7 +61,7 @@ public class StudentAndInterestBeanList {
 
     }
 
-    public String[] findByStudentInterestId(int interestId){
+    public String[] findByStudentInterestId(String interestId){
 
         String studentNumber[] = new String[50];
 
@@ -84,7 +84,7 @@ public class StudentAndInterestBeanList {
 
     }
 
-    public boolean setStudentInterestId(int index,int studentInterestId){
+    public boolean setStudentInterestId(int index,String studentInterestId){
 
         if(index<1||index>length()){
             return false;

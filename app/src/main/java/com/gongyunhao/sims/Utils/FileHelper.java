@@ -129,7 +129,7 @@ public class FileHelper {
         List<StudentAndInterestBean> studentaInterestBeans=new ArrayList<>(  );
         for (int j=0;j<studentdatadetail.length;j++){
             String[] detailitem=studentdatadetail[j].split( " " );
-            studentaInterestBeans.add( new StudentAndInterestBean(detailitem[0],Integer.parseInt( detailitem[1] )) );
+            studentaInterestBeans.add( new StudentAndInterestBean(detailitem[0], detailitem[1] ) );
         }
         return studentaInterestBeans;
     }
@@ -168,7 +168,8 @@ public class FileHelper {
         List<InterestIdAndInterestNameAndInterestCategoryIdBean> studentaInterestBeans=new ArrayList<>(  );
         for (int j=0;j<studentdatadetail.length;j++){
             String[] detailitem=studentdatadetail[j].split( " " );
-            studentaInterestBeans.add( new InterestIdAndInterestNameAndInterestCategoryIdBean( Integer.parseInt( detailitem[0] ) , detailitem[1] , Integer.parseInt(  detailitem[2] )) );
+
+            studentaInterestBeans.add( new InterestIdAndInterestNameAndInterestCategoryIdBean( detailitem[0]  , detailitem[1] ,  detailitem[2] ) );
         }
         return studentaInterestBeans;
     }
@@ -207,7 +208,7 @@ public class FileHelper {
         List<InterestCategoryAndHisIdBean> studentaInterestBeans=new ArrayList<>(  );
         for (int j=0;j<studentdatadetail.length;j++){
             String[] detailitem=studentdatadetail[j].split( " " );
-            studentaInterestBeans.add( new InterestCategoryAndHisIdBean(Integer.parseInt( detailitem[0] ),detailitem[1]) );
+            studentaInterestBeans.add( new InterestCategoryAndHisIdBean(detailitem[0] ,detailitem[1]) );
         }
         return studentaInterestBeans;
     }

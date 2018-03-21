@@ -19,9 +19,9 @@ public class StudentAndInterestBean {
 
     private String studentNumber;
 
-    private int interestId;
+    private String interestId;
 
-    public StudentAndInterestBean(String studentNumber,int interestId){
+    public StudentAndInterestBean(String studentNumber,String interestId){
         this.studentNumber = studentNumber;
         this.interestId = interestId;
     }
@@ -34,11 +34,11 @@ public class StudentAndInterestBean {
         return studentNumber;
     }
 
-    public void setInterestId(int interestId){
+    public void setInterestId(String interestId){
         this.interestId = interestId;
     }
 
-    public int getInterestId(){
+    public String getInterestId(){
         return interestId;
     }
 

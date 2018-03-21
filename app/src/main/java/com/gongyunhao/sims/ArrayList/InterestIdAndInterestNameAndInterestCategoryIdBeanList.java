@@ -20,7 +20,7 @@ public class InterestIdAndInterestNameAndInterestCategoryIdBeanList {
 
     InterestIdAndInterestNameAndInterestCategoryIdBean head = null;
 
-    public void addInterestIdAndInterestNameAndInterestCategoryIdBean(int interestId, String interestName, int interestCategoryId){
+    public void addInterestIdAndInterestNameAndInterestCategoryIdBean(String interestId, String interestName, String interestCategoryId){
 
         InterestIdAndInterestNameAndInterestCategoryIdBean interestIdAndInterestNameAndInterestCategoryIdBean = new InterestIdAndInterestNameAndInterestCategoryIdBean(interestId,interestName,interestCategoryId);
 
@@ -40,7 +40,7 @@ public class InterestIdAndInterestNameAndInterestCategoryIdBeanList {
     }
 
     //通过兴趣id找兴趣名
-    public String getInterestName(int interestsId){
+    public String getInterestName(String interestsId){
 
         if (head.getInterestId()==interestsId){
             return head.getInterestName();
@@ -59,7 +59,7 @@ public class InterestIdAndInterestNameAndInterestCategoryIdBeanList {
         return null;
     }
 
-    public int getInterestId(String interestName){
+    public String getInterestId(String interestName){
 
         if(head.getInterestName().equals(interestName)){
             return head.getInterestId();
@@ -74,11 +74,11 @@ public class InterestIdAndInterestNameAndInterestCategoryIdBeanList {
             curInterestIdAndInterestNameAndInterestCatergory = curInterestIdAndInterestNameAndInterestCatergory.next;
         }
 
-        return 0;
+        return "";
 
     }
 
-    public boolean setInterestId(int index,int studentInterestId){
+    public boolean setInterestId(int index,String studentInterestId){
 
         if(index<1||index>length()){
             return false;
@@ -107,7 +107,7 @@ public class InterestIdAndInterestNameAndInterestCategoryIdBeanList {
 
     }
 
-    public boolean setInterestCategoryId(int index,int studentCategoryId){
+    public boolean setInterestCategoryId(int index,String studentCategoryId){
 
         if(index<1||index>length()){
             return false;

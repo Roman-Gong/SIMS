@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.gongyunhao.sims.Activity.MainActivity">
     <include layout="@layout/title_base"
         android:id="@+id/mtitle"/>
@@ -22,26 +23,7 @@
         android:layout_marginTop="56dp"
         android:orientation="vertical"
         android:visibility="gone">
-        <Button
-            android:id="@+id/btn_delete_student"
-            android:text="删除学生信息"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <Button
-            android:id="@+id/btn_modify_student"
-            android:text="修改学生信息"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <Button
-            android:id="@+id/btn_search_student"
-            android:text="查询学生信息"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <Button
-            android:id="@+id/btn_add_interest"
-            android:text="添加兴趣类"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+
         <Button
             android:id="@+id/btn_delete_interest"
             android:text="删除兴趣类"
@@ -54,6 +36,16 @@
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btn_add_interest"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_gravity="bottom|start"
+        android:src="@drawable/ic_add_white_24dp"
+        app:backgroundTint="@color/colorPrimary"
+        android:layout_marginBottom="24dp"
+        android:layout_marginLeft="24dp"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/btn_add_student"

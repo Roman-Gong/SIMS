@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,14 +8,15 @@
     tools:context="com.gongyunhao.sims.AddStudentActivity">
 
     <EditText
-        android:id="@+id/et_add_student"
+        android:id="@+id/et_modify_student"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="姓名"/>
     <RadioGroup
-        android:id="@+id/radio_add_sex"
+        android:id="@+id/radio_modify_sex"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_below="@id/et_modify_student"
         android:orientation="horizontal">
 
         <RadioButton
@@ -32,26 +33,50 @@
             android:layout_height="wrap_content"/>
 
     </RadioGroup>
+
     <EditText
-        android:id="@+id/et_add_grade"
+        android:id="@+id/et_modify_grade"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/radio_modify_sex"
         android:hint="年级"/>
+
     <EditText
-        android:id="@+id/et_add_number"
+        android:id="@+id/et_modify_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/et_modify_grade"
         android:hint="学号"/>
+
     <EditText
-        android:id="@+id/et_add_major"
+        android:id="@+id/et_modify_major"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/et_modify_number"
         android:hint="专业"/>
 
-    <Button
-        android:id="@+id/btn_add_yes"
+    <TextView
+        android:id="@+id/textview_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Spinner
+        android:layout_marginTop="6dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:id="@+id/spinner_modify_interest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="添加"/>
+        android:layout_below="@id/et_modify_major">
 
-</LinearLayout>
+    </Spinner>
+
+    <Button
+        android:id="@+id/btn_modify_yes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:text="确认修改"/>
+
+</RelativeLayout>
