@@ -21,7 +21,7 @@ public class InterestCategoryAndHisIdBean {
 
     private int interestCategoryId;
 
-    public InterestCategoryAndHisIdBean(String interestCategoryName,int interestCategoryId){
+    public InterestCategoryAndHisIdBean(int interestCategoryId,String interestCategoryName){
         this.interestCategoryName = interestCategoryName;
         this.interestCategoryId = interestCategoryId;
     }

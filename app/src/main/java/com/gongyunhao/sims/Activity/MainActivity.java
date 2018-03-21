@@ -6,11 +6,17 @@ import android.view.View;
 import android.widget.Button;
 
 import com.gongyunhao.sims.AddStudentActivity;
+import com.gongyunhao.sims.Bean.StudentBean;
 import com.gongyunhao.sims.R;
+import com.gongyunhao.sims.Utils.FileHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener{
     private Button addstudent,deletestudent,searchstudent,modifystudent;
     private Button addinterest,deleteinterest,modifyinterest;
+    private List<StudentBean> mStudentList=new ArrayList<>(  );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +25,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         initViews();
         initListeners();
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart( );
+        FileHelper mfileHelper=new FileHelper();
+        if (mfileHelper.readStudentData( MainActivity.this )!=null){
+            mStudentList.clear();//如果不clear掉，每次返回都会addAll一次，导致list长度翻倍。
+            mStudentList.addAll( mfileHelper.readStudentData( MainActivity.this ) );
+        }
     }
 
     @Override
@@ -35,6 +51,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             case R.id.btn_add_interest:
                 break;
             case R.id.btn_delete_student:
+                if (mStudentList.size()<1){
+                    showToast( "list长度为0，再删就到-1，越界了" );
+                }else {
+                    mStudentList.remove( mStudentList.size()-1 );
+                    FileHelper fileHelper=new FileHelper();
+                    fileHelper.saveStudentDataToFile( MainActivity.this,mStudentList );
+                    showToast( "删除最后一个学生成功" );
+                }
                 break;
             case R.id.btn_delete_interest:
                 break;

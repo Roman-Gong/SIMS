@@ -1,6 +1,5 @@
 package com.gongyunhao.sims;
 
-import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,9 +8,12 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import com.gongyunhao.sims.Bean.StudentBean;
+import com.gongyunhao.sims.R;
+import com.gongyunhao.sims.Utils.FileHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddStudentActivity extends AppCompatActivity implements View.OnClickListener,RadioGroup.OnCheckedChangeListener{
     private EditText name,number,major,grade;
@@ -19,6 +21,7 @@ public class AddStudentActivity extends AppCompatActivity implements View.OnClic
     private RadioGroup radioGroup;
     private Button btn_yes;
     private String sname,snumber,smajor,sgrade;
+    private List<StudentBean> mStudentList=new ArrayList<>(  );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,11 @@ public class AddStudentActivity extends AppCompatActivity implements View.OnClic
         btn_yes=findViewById( R.id.btn_add_yes );
         btn_yes.setOnClickListener( this );
         radioGroup.setOnCheckedChangeListener( this );
+        FileHelper mfileHelper=new FileHelper();
+        if (mfileHelper.readStudentData( AddStudentActivity.this )!=null){
+            mStudentList.addAll( mfileHelper.readStudentData( AddStudentActivity.this ) );
+        }
+
     }
 
     @Override
@@ -43,14 +51,10 @@ public class AddStudentActivity extends AppCompatActivity implements View.OnClic
                 smajor=major.getText().toString();
                 sgrade=grade.getText().toString();
                 if (sname!=null&&snumber!=null&&smajor!=null&&sgrade!=null&&isselectedsex!=false){
+                    mStudentList.add( new StudentBean( sname,isboy?1:0,sgrade,snumber,smajor ) );
                     //save to File
-                    FileOutputStream outputStream=null;
-                    BufferedWriter writer=null;
-                    try {
-                        outputStream=openFileOutput( "studentData", Context.MODE_PRIVATE );
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace( );
-                    }
+                    FileHelper fileHelper=new FileHelper();
+                    fileHelper.saveStudentDataToFile( AddStudentActivity.this,mStudentList );
                 }else {
                     Toast.makeText( AddStudentActivity.this,"请填写完整信息",Toast.LENGTH_SHORT ).show();
                 }
