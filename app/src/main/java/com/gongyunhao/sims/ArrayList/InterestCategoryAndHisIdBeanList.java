@@ -20,7 +20,7 @@ public class InterestCategoryAndHisIdBeanList {
 
     InterestCategoryAndHisIdBean head = null;
 
-    public void addInterestCategoryAndHisIdBean(String interestCategoryName,int interestCategoryId){
+    public void addInterestCategoryAndHisIdBean(String interestCategoryName,String interestCategoryId){
 
         InterestCategoryAndHisIdBean interestCategoryAndHisIdBean = new InterestCategoryAndHisIdBean(interestCategoryId,interestCategoryName);
 
@@ -39,7 +39,7 @@ public class InterestCategoryAndHisIdBeanList {
 
     }
 
-    public boolean setInterestCategoryId(int index,int studentCategoryId){
+    public boolean setInterestCategoryId(int index,String studentCategoryId){
 
         if(index<1||index>length()){
             return false;
