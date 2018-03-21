@@ -39,4 +39,128 @@ public class InterestIdAndInterestNameAndInterestCategoryIdBeanList {
 
     }
 
+    //通过兴趣id找兴趣名
+
+    public boolean setInterestId(int index,int studentInterestId){
+
+        if(index<1||index>length()){
+            return false;
+        }
+
+        if (index==1){
+            head.setInterestId(studentInterestId);
+            return true;
+        }
+
+        int i = 2;
+
+        InterestIdAndInterestNameAndInterestCategoryIdBean curStudentAndInterestBean = head.next;
+
+        while(curStudentAndInterestBean!=null){
+
+            if (i==index){
+                curStudentAndInterestBean.setInterestId(studentInterestId);
+                return true;
+            }
+            curStudentAndInterestBean = curStudentAndInterestBean.next;
+            i++;
+
+        }
+        return false;
+
+    }
+
+    public boolean setInterestCategoryId(int index,int studentCategoryId){
+
+        if(index<1||index>length()){
+            return false;
+        }
+
+        if (index==1){
+            head.setInterestCategoryId(studentCategoryId);
+            return true;
+        }
+
+        int i = 2;
+
+        InterestIdAndInterestNameAndInterestCategoryIdBean curStudentAndInterestBean = head.next;
+
+        while(curStudentAndInterestBean!=null){
+
+            if (i==index){
+                curStudentAndInterestBean.setInterestCategoryId(studentCategoryId);
+                return true;
+            }
+            curStudentAndInterestBean = curStudentAndInterestBean.next;
+            i++;
+
+        }
+        return false;
+    }
+
+    public boolean setInterestName(int index,String interestName){
+
+        if(index<1||index>length()){
+            return false;
+        }
+
+        if (index==1){
+            head.setInterestName(interestName);
+            return true;
+        }
+
+        int i = 2;
+
+        InterestIdAndInterestNameAndInterestCategoryIdBean curStudentAndInterestBean = head.next;
+
+        while(curStudentAndInterestBean!=null){
+
+            if (i==index){
+                curStudentAndInterestBean.setInterestName(interestName);
+                return true;
+            }
+            curStudentAndInterestBean = curStudentAndInterestBean.next;
+            i++;
+
+        }
+        return false;
+
+    }
+
+    public boolean deleteStudentBean(int index) {
+
+        if (index<1||index>length()) {
+            return false;
+        }
+        if (index==1) {
+            head=head.next;
+            return true;
+        }
+        int i=1;
+        InterestIdAndInterestNameAndInterestCategoryIdBean preNode=head;
+        InterestIdAndInterestNameAndInterestCategoryIdBean curNode=head.next;
+        while(curNode!=null) {
+            if(i==index) {
+                preNode.next=curNode.next;
+                return true;
+            }
+            preNode = curNode;
+            curNode = curNode.next;
+            i++;
+        }
+
+        return false;
+
+    }
+
+    public int length() {
+        int length=0;
+        InterestIdAndInterestNameAndInterestCategoryIdBean temp = head;
+        while (temp!=null) {
+            length++;
+            temp=temp.next;
+        }
+        return length;
+    }
+
 }
