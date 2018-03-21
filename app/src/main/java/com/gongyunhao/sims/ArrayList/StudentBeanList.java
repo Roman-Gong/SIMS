@@ -62,6 +62,30 @@ public class StudentBeanList {
 
     }
 
+    public StudentBean getStudentBean(int index){
+
+        if (index<1||index>length()){
+            return null;
+        }
+        if (index==1){
+            return head;
+        }
+        int i=2;
+        StudentBean curStudentBean = head.next;
+        while(curStudentBean!=null){
+
+            if (i==index){
+                return curStudentBean;
+            }
+
+            curStudentBean = curStudentBean.next;
+            i++;
+
+        }
+        return null;
+
+    }
+
     public int findStudentBeanListByStudentName(String studentName){
 
         int index = 2;
