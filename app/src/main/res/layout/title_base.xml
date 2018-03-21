@@ -3,36 +3,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="56dp"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorPrimary">
 
-        <ImageButton
-            android:id="@+id/cl_ibtn_back"
-            android:layout_width="@dimen/toast_icon_size"
-            android:layout_height="@dimen/toast_icon_size"
-            android:layout_centerVertical="true"
-            android:layout_margin="@dimen/big_corner"
-            android:background="@drawable/ic_arrow_back_white_24dp"/>
-
-        <TextView
-            android:id="@+id/title_tv"
-            android:layout_width="wrap_content"
+        <EditText
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:padding="6dp"
-            android:textColor="@color/ColorWhite"
-            android:textSize="18sp"
-            tools:text="兴趣管理系统"/>
+            android:layout_marginLeft="26dp"
+            android:layout_marginRight="26dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:hint="搜索"
+            android:paddingLeft="@dimen/setting_spacing"
+            android:background="@drawable/shape_search"/>
 
-        <ImageButton
-            android:id="@+id/cl_ibtn_search"
-            android:layout_width="@dimen/toast_icon_size"
-            android:layout_height="@dimen/toast_icon_size"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="@dimen/big_corner"
-            android:background="@drawable/ic_search_white_24dp"/>
 
     </RelativeLayout>
