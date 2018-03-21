@@ -95,6 +95,123 @@ public class FileHelper {
         return studentBeans;
     }
 
+    public List<StudentAndInterestBean> readStudentAInterestData(Context context){
+        FileInputStream inputStream=null;
+        BufferedReader reader=null;
+        StringBuilder content=new StringBuilder(  );
+        try {
+            inputStream=context.openFileInput( LIKE_DATA );
+            reader=new BufferedReader( new InputStreamReader( inputStream ) );
+            String line="";
+            while ((line=reader.readLine())!=null){
+                String str = line + "\r\n";//手动换行，便于下面的分割。
+                content.append( str );
+            }
+        } catch (IOException e) {
+            e.printStackTrace( );
+        }finally {
+            if (reader!=null){
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace( );
+                }
+            }
+        }
+        //此处content已经被还原成存储时的String格式,然后可以进行分割存入List中。
+        String studentdatastr=content.toString();
+        if (studentdatastr.length()<3){
+            TextUtils.isEmpty( studentdatastr );
+            return null;
+        }
+        Log.d( "readSAI--------->",studentdatastr );
+        String[] studentdatadetail=studentdatastr.split( "\n" );
+        List<StudentAndInterestBean> studentaInterestBeans=new ArrayList<>(  );
+        for (int j=0;j<studentdatadetail.length;j++){
+            String[] detailitem=studentdatadetail[j].split( " " );
+            studentaInterestBeans.add( new StudentAndInterestBean(detailitem[0],Integer.parseInt( detailitem[1] )) );
+        }
+        return studentaInterestBeans;
+    }
+
+    public List<InterestIdAndInterestNameAndInterestCategoryIdBean> readIIAINAICData(Context context){
+        FileInputStream inputStream=null;
+        BufferedReader reader=null;
+        StringBuilder content=new StringBuilder(  );
+        try {
+            inputStream=context.openFileInput( BELONG_DATA );
+            reader=new BufferedReader( new InputStreamReader( inputStream ) );
+            String line="";
+            while ((line=reader.readLine())!=null){
+                String str = line + "\r\n";//手动换行，便于下面的分割。
+                content.append( str );
+            }
+        } catch (IOException e) {
+            e.printStackTrace( );
+        }finally {
+            if (reader!=null){
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace( );
+                }
+            }
+        }
+        //此处content已经被还原成存储时的String格式,然后可以进行分割存入List中。
+        String studentdatastr=content.toString();
+        if (studentdatastr.length()<3){
+            TextUtils.isEmpty( studentdatastr );
+            return null;
+        }
+        Log.d( "readIIAINAIC--------->",studentdatastr );
+        String[] studentdatadetail=studentdatastr.split( "\n" );
+        List<InterestIdAndInterestNameAndInterestCategoryIdBean> studentaInterestBeans=new ArrayList<>(  );
+        for (int j=0;j<studentdatadetail.length;j++){
+            String[] detailitem=studentdatadetail[j].split( " " );
+            studentaInterestBeans.add( new InterestIdAndInterestNameAndInterestCategoryIdBean( Integer.parseInt( detailitem[0] ) , detailitem[1] , Integer.parseInt(  detailitem[2] )) );
+        }
+        return studentaInterestBeans;
+    }
+
+    public List<InterestCategoryAndHisIdBean> readCategoryAndHisIdData(Context context){
+        FileInputStream inputStream=null;
+        BufferedReader reader=null;
+        StringBuilder content=new StringBuilder(  );
+        try {
+            inputStream=context.openFileInput( CATEGORY_DATA );
+            reader=new BufferedReader( new InputStreamReader( inputStream ) );
+            String line="";
+            while ((line=reader.readLine())!=null){
+                String str = line + "\r\n";//手动换行，便于下面的分割。
+                content.append( str );
+            }
+        } catch (IOException e) {
+            e.printStackTrace( );
+        }finally {
+            if (reader!=null){
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace( );
+                }
+            }
+        }
+        //此处content已经被还原成存储时的String格式,然后可以进行分割存入List中。
+        String studentdatastr=content.toString();
+        if (studentdatastr.length()<3){
+            TextUtils.isEmpty( studentdatastr );
+            return null;
+        }
+        Log.d( "readIIAINAIC--------->",studentdatastr );
+        String[] studentdatadetail=studentdatastr.split( "\n" );
+        List<InterestCategoryAndHisIdBean> studentaInterestBeans=new ArrayList<>(  );
+        for (int j=0;j<studentdatadetail.length;j++){
+            String[] detailitem=studentdatadetail[j].split( " " );
+            studentaInterestBeans.add( new InterestCategoryAndHisIdBean(Integer.parseInt( detailitem[0] ),detailitem[1]) );
+        }
+        return studentaInterestBeans;
+    }
+
     /**
      * 存储学生信息完成。
      * 每一项用空格分割。每一行用\n分割。
