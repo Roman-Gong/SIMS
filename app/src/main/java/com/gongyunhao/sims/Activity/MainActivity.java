@@ -1,6 +1,7 @@
 package com.gongyunhao.sims.Activity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -40,7 +41,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         studentDataAdapter.setmOnItemClickListener( new StudentDataAdapter.OnItemClickListener( ) {
             @Override
             public void onItemClick(View view, int position) {
-                showToast( "点击了"+position );
+                Intent intent=new Intent( MainActivity.this,ModifyActivity.class );
+                intent.putExtra( "position",position );
             }
 
             @Override
