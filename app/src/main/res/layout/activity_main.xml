@@ -8,16 +8,20 @@
     <include layout="@layout/title_base"
         android:id="@+id/mtitle"/>
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_student_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp">
+
+    </android.support.v7.widget.RecyclerView>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="56dp"
-        android:orientation="vertical">
-        <Button
-            android:id="@+id/btn_add_student"
-            android:text="添加学生信息"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+        android:orientation="vertical"
+        android:visibility="gone">
         <Button
             android:id="@+id/btn_delete_student"
             android:text="删除学生信息"
@@ -48,13 +52,16 @@
             android:text="修改兴趣类"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btn_add_student"
         android:layout_width="55dp"
         android:layout_height="55dp"
-        android:layout_gravity="bottom|center"
+        android:layout_gravity="bottom|end"
         android:src="@drawable/ic_add_white_24dp"
-        android:layout_marginBottom="@dimen/s_big_spacing"/>
+        android:layout_marginBottom="@dimen/big_spacing"
+        android:layout_marginRight="@dimen/big_spacing"/>
 
 </FrameLayout>

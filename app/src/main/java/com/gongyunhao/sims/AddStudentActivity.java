@@ -55,6 +55,8 @@ public class AddStudentActivity extends AppCompatActivity implements View.OnClic
                     //save to File
                     FileHelper fileHelper=new FileHelper();
                     fileHelper.saveStudentDataToFile( AddStudentActivity.this,mStudentList );
+                    Toast.makeText( AddStudentActivity.this,"添加成功!",Toast.LENGTH_SHORT ).show();
+                    finish();
                 }else {
                     Toast.makeText( AddStudentActivity.this,"请填写完整信息",Toast.LENGTH_SHORT ).show();
                 }

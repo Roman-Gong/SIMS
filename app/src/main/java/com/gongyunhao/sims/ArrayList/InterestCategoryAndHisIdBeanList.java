@@ -22,7 +22,7 @@ public class InterestCategoryAndHisIdBeanList {
 
     public void addInterestCategoryAndHisIdBean(String interestCategoryName,int interestCategoryId){
 
-        InterestCategoryAndHisIdBean interestCategoryAndHisIdBean = new InterestCategoryAndHisIdBean(interestCategoryName,interestCategoryId);
+        InterestCategoryAndHisIdBean interestCategoryAndHisIdBean = new InterestCategoryAndHisIdBean(interestCategoryId,interestCategoryName);
 
 
         if (head == null) {

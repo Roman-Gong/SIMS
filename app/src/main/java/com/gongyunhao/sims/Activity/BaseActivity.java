@@ -132,10 +132,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         //继承了BaseActivity的类, 如果要使用返回关闭Activity的功能
         //需要在继承的Activity的onClick(View v)里写上super.onClick(v);
         switch (v.getId()) {
-            case R.id.cl_ibtn_back:
-                //R.id.back为标题左上角的返回控件
-                onBackPressed();
-                break;
+
             default:
                 break;
         }
