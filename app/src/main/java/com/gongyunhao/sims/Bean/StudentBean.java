@@ -37,7 +37,7 @@ public class StudentBean {
     private String studentMajor;          //专业
 
     public StudentBean(String studentName, int studentSex, String studentGrade, String studentNumber, String studentMajor) {
-        this.studentName = studentNumber;
+        this.studentName = studentName;
         this.studentSex = studentSex;
         this.studentGrade = studentGrade;
         this.studentNumber = studentNumber;
