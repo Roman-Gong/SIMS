@@ -4,11 +4,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ImageView;
@@ -39,6 +42,7 @@ public class SearchActivity extends AppCompatActivity {
     private RecyclerView recyclerViewSearch;
     private StudentDataAdapter studentDataAdapter;
     private List<StudentBean> searchStudentBeans;
+    private TextView textViewSearchSelect;
     private String Tag = "SearchActivity";
 
     @Override
@@ -51,9 +55,41 @@ public class SearchActivity extends AppCompatActivity {
         textViewSearch = (TextView) findViewById(R.id.search_text);
         imageViewCancle = (ImageView) findViewById(R.id.search_cancle);
         recyclerViewSearch = (RecyclerView) findViewById(R.id.search_recyclerview);
+        textViewSearchSelect = (TextView) findViewById(R.id.search_select);
+
+        textViewSearchSelect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                PopupMenu popupMenu = new PopupMenu(SearchActivity.this,textViewSearchSelect);
+                popupMenu.getMenuInflater().inflate(R.menu.search_select,popupMenu.getMenu());
+                popupMenu.show();
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()){
+                            case R.id.search_by_name:
+                                textViewSearchSelect.setText("按名字");
+                                break;
+                            case R.id.search_by_number:
+                                textViewSearchSelect.setText("按学号");
+                                break;
+                            case R.id.search_by_interest:
+                                textViewSearchSelect.setText("按兴趣");
+                                break;
+                        }
+                        return true;
+                    }
+                });
+
+            }
+        });
+
+
+
         searchStudentBeans = new ArrayList<>();
         studentDataAdapter = new StudentDataAdapter(SearchActivity.this,searchStudentBeans);
-        recyclerViewSearch.setLayoutManager(new LinearLayoutManager(SearchActivity.this));
+        recyclerViewSearch.setLayoutManager( new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
         recyclerViewSearch.setItemAnimator(new DefaultItemAnimator());
         recyclerViewSearch.setAdapter(studentDataAdapter);
 
@@ -88,7 +124,14 @@ public class SearchActivity extends AppCompatActivity {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     //TODO:你自己的业务逻辑
                     //Toast.makeText(SearchActivity.this, "点击了搜索", Toast.LENGTH_SHORT).show();
-                    searchByStudentName(textViewSearch.getText().toString());
+                    if(textViewSearchSelect.getText().toString().equals("按名字")){
+                        searchByStudentName(textViewSearch.getText().toString());
+                    }else if (textViewSearchSelect.getText().toString().equals("按学号")){
+                        searchByStudentNumber(textViewSearch.getText().toString());
+                    }else{
+                        searchByInterestName(textViewSearch.getText().toString());
+                    }
+
                     return true;
                 }
                 return false;
@@ -109,8 +152,6 @@ public class SearchActivity extends AppCompatActivity {
             List<StudentBean> tempStudentList = fileHelper.readStudentData(SearchActivity.this);
             for (int i = 0; i < tempStudentList.size(); i++) {
                 studentBeanList.addStudentBean(tempStudentList.get(i).getStudentName(), tempStudentList.get(i).getStudentSex(), tempStudentList.get(i).getStudentGrade(), tempStudentList.get(i).getStudentNumber(), tempStudentList.get(i).getStudentMajor());
-                Log.d(Tag,"---->"+tempStudentList.get(i).getStudentName());
-                Log.d(Tag,"---->"+tempStudentList.get(i).getStudentNumber());
             }
         }
 
@@ -144,6 +185,8 @@ public class SearchActivity extends AppCompatActivity {
 
             int tempIndex = studentBeanList.findStudentBeanListByStudentNumber(studentNumber);
             StudentBean studentBean = studentBeanList.getStudentBean(tempIndex);
+            searchStudentBeans.add(studentBean);
+            studentDataAdapter.notifyDataSetChanged();
 
         }
 
@@ -155,8 +198,10 @@ public class SearchActivity extends AppCompatActivity {
 
                 int tempIndex = studentBeanList.findStudentBeanListByStudentNumber(tempStudentNumbers[i]);
                 StudentBean studentBean = studentBeanList.getStudentBean(tempIndex);
+                searchStudentBeans.add(studentBean);
 
             }
+            studentDataAdapter.notifyDataSetChanged();
 
         }
 

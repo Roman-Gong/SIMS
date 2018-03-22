@@ -10,7 +10,6 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.gongyunhao.sims.Adapter.StudentDataAdapter;
 import com.gongyunhao.sims.AddStudentActivity;

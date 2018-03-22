@@ -3,7 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="56dp"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorPrimaryDark">
+
+
+        <TextView
+            android:textSize="18sp"
+            android:layout_centerInParent="true"
+            android:textStyle="bold"
+            android:textColor="@color/ColorWhite"
+            android:text="学生信息管理系统"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <ImageView
             android:id="@+id/search"

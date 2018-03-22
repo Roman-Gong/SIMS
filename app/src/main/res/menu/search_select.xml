@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/search_by_name"
+        android:title="按姓名搜索"/>
+
+    <item
+        android:id="@+id/search_by_number"
+        android:title="按学号搜索"/>
+
+    <item
+        android:id="@+id/search_by_interest"
+        android:title="按兴趣搜索"/>
+
+</menu>

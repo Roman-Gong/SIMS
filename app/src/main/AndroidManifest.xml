@@ -17,8 +17,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".AddStudentActivity"></activity>
-        <activity android:name=".Activity.ModifyActivity"></activity>
+        <activity android:name=".AddStudentActivity"
+            android:theme="@style/AddStudent"></activity>
+        <activity android:name=".Activity.ModifyActivity"
+            android:theme="@style/AddStudent"></activity>
         <activity android:name=".Activity.SearchActivity"></activity>
         <activity android:name=".Activity.AddInterestActivity">
         </activity>
