@@ -70,7 +70,7 @@ public class StudentDataAdapter extends RecyclerView.Adapter<StudentDataAdapter.
         }else {
             holder.sex.setText( "性别：女" );
         }
-        holder.name.setText( studentBeanList.get( position ).getStudentName() );
+        holder.name.setText( "姓名："+studentBeanList.get( position ).getStudentName() );
         holder.number.setText( "学号："+studentBeanList.get( position ).getStudentNumber() );
         holder.grade.setText( "年级："+studentBeanList.get( position ).getStudentGrade() );
         holder.major.setText( "专业："+studentBeanList.get( position ).getStudentMajor() );

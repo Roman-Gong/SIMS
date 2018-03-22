@@ -9,12 +9,15 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.gongyunhao.sims.Adapter.StudentDataAdapter;
 import com.gongyunhao.sims.AddStudentActivity;
 import com.gongyunhao.sims.ArrayList.InterestIdAndInterestNameAndInterestCategoryIdBeanList;
 import com.gongyunhao.sims.ArrayList.StudentAndInterestBeanList;
 import com.gongyunhao.sims.ArrayList.StudentBeanList;
+import com.gongyunhao.sims.Bean.InterestIdAndInterestNameAndInterestCategoryIdBean;
+import com.gongyunhao.sims.Bean.StudentAndInterestBean;
 import com.gongyunhao.sims.Bean.StudentBean;
 import com.gongyunhao.sims.R;
 import com.gongyunhao.sims.Utils.FileHelper;
@@ -23,11 +26,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener{
+
+    private Button deletestudent,searchstudent,modifystudent;
     private Button deleteinterest,modifyinterest;
+
     private FloatingActionButton addstudent,addinterest;
-    private List<StudentBean> mStudentList=new ArrayList<>(  );
+    private List<StudentBean> mStudentList;
+    private ImageView imageViewSearch;
     private RecyclerView mStudentRecycler;
+    private StudentBeanList studentBeanList;
+    private StudentAndInterestBeanList studentAndInterestBeanList;
+    private InterestIdAndInterestNameAndInterestCategoryIdBeanList interestIdAndInterestNameAndInterestCategoryIdBeanList;
     private StudentDataAdapter studentDataAdapter;
+    private boolean isSearching;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +46,36 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         setContentView( );
         initViews();
         initListeners();
+        mStudentList = new ArrayList<>();
+        studentBeanList = new StudentBeanList();
+        studentAndInterestBeanList = new StudentAndInterestBeanList();
+        interestIdAndInterestNameAndInterestCategoryIdBeanList = new InterestIdAndInterestNameAndInterestCategoryIdBeanList();
+        FileHelper fileHelper = new FileHelper();
+        if (fileHelper.readStudentAInterestData(MainActivity.this)!=null){
+            List<StudentAndInterestBean> tempStudentAndInterestList = fileHelper.readStudentAInterestData(MainActivity.this);
+            for (int i=0;i<tempStudentAndInterestList.size();i++){
+                studentAndInterestBeanList.addStudentAndInterestBean(tempStudentAndInterestList.get(i).getStudentNumber(),tempStudentAndInterestList.get(i).getInterestId());
+            }
+        }
+
+        if (fileHelper.readIIAINAICData(MainActivity.this)!=null){
+            List<InterestIdAndInterestNameAndInterestCategoryIdBean> interestIdAndInterestNameAndInterestCategoryIdBeans = fileHelper.readIIAINAICData(MainActivity.this);
+            for (int i=0;i<interestIdAndInterestNameAndInterestCategoryIdBeans.size();i++){
+                interestIdAndInterestNameAndInterestCategoryIdBeanList.addInterestIdAndInterestNameAndInterestCategoryIdBean(interestIdAndInterestNameAndInterestCategoryIdBeans.get(i).getInterestId(),interestIdAndInterestNameAndInterestCategoryIdBeans.get(i).getInterestName(),interestIdAndInterestNameAndInterestCategoryIdBeans.get(i).getInterestCategoryId());
+            }
+        }
+
+        imageViewSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this,SearchActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+
         studentDataAdapter = new StudentDataAdapter(MainActivity.this,mStudentList);
         mStudentRecycler.setAdapter(studentDataAdapter);
         studentDataAdapter.setmOnItemClickListener( new StudentDataAdapter.OnItemClickListener( ) {
@@ -113,10 +154,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     @Override
     public void initViews() {
-        addstudent=findViewById( R.id.btn_add_student );
-        addinterest=findViewById( R.id.btn_add_interest );
-        deleteinterest=findViewById( R.id.btn_delete_interest );
-        modifyinterest=findViewById( R.id.btn_modify_interest );
+        imageViewSearch = findViewById(R.id.search);
+        addstudent = findViewById( R.id.btn_add_student );
+        addinterest = findViewById( R.id.btn_add_interest );
+        deleteinterest = findViewById( R.id.btn_delete_interest );
+        modifyinterest = findViewById( R.id.btn_modify_interest );
         mStudentRecycler = findViewById(R.id.recycler_student_data);
         mStudentRecycler.setLayoutManager( new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL) );
     }
@@ -134,36 +176,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     }
 
-    public void searchByStudentName(String studentName){
-
-        StudentBeanList studentBeanList = new StudentBeanList();
-        int tempIndex = studentBeanList.findStudentBeanListByStudentName(studentName);
-        StudentBean studentBean = studentBeanList.getStudentBean(tempIndex);
 
 
-    }
 
-    public void searchByStudentNumber(String studentNumber){
-
-        StudentBeanList studentBeanList = new StudentBeanList();
-        int tempIndex = studentBeanList.findStudentBeanListByStudentNumber(studentNumber);
-        StudentBean studentBean = studentBeanList.getStudentBean(tempIndex);
-
-    }
-
-    public void searchByInterestName(String interestName){
-
-        StudentBeanList studentBeanList = new StudentBeanList();
-        StudentAndInterestBeanList studentAndInterestBeanList = new StudentAndInterestBeanList();
-        InterestIdAndInterestNameAndInterestCategoryIdBeanList interestIdAndInterestNameAndInterestCategoryIdBeanList = new InterestIdAndInterestNameAndInterestCategoryIdBeanList();
-        String tempInterestId = interestIdAndInterestNameAndInterestCategoryIdBeanList.getInterestId(interestName);
-        String []tempStudentNumbers = studentAndInterestBeanList.findByStudentInterestId(tempInterestId);
-        for (int i=0;i<tempStudentNumbers.length;i++){
-
-            int tempIndex = studentBeanList.findStudentBeanListByStudentNumber(tempStudentNumbers[i]);
-            StudentBean studentBean = studentBeanList.getStudentBean(tempIndex);
-
-        }
-
-    }
 }

@@ -38,28 +38,28 @@ public class StudentAndInterestBeanList {
 
     }
 
-//    public int[] findByStudentNumber(String studentNumber){
+    public String[] findByStudentNumber(String studentNumber){
 
-//        int interests[] = new int[50];
-//
-//        int index = 0;
-//
-//        if (head.getStudentNumber().equals(studentNumber)){
-//            interests[index] = head.getInterestId();
-//            index++;
-//        }
-//
-//        StudentAndInterestBean curStudentAndInterestBean = head.next;
-//
-//        while(curStudentAndInterestBean != null){
-//            if (curStudentAndInterestBean.getStudentNumber().equals(studentNumber)){
-//                interests[index] = head.getInterestId();
-//                index++;
-//            }
-//        }
-//        return interests;
+        String interests[] = new String[50];
 
-//    }
+        int index = 0;
+
+        if (head.getStudentNumber().equals(studentNumber)){
+            interests[index] = head.getInterestId();
+            index++;
+        }
+
+        StudentAndInterestBean curStudentAndInterestBean = head.next;
+
+        while(curStudentAndInterestBean != null){
+            if (curStudentAndInterestBean.getStudentNumber().equals(studentNumber)){
+                interests[index] = head.getInterestId();
+                index++;
+            }
+        }
+        return interests;
+
+    }
 
     public String[] findByStudentInterestId(String interestId){
 

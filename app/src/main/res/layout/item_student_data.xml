@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
+    android:layout_margin="5dp"
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
@@ -13,15 +13,17 @@
         android:orientation="vertical">
 
     <TextView
+        android:textStyle="bold"
+        android:textColor="@color/colorDark"
         android:id="@+id/textView_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:layout_gravity="center"
-        android:textSize="18sp"
+        android:layout_marginLeft="4dp"
         tools:text="龚云浩"/>
 
     <TextView
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="4dp"
@@ -29,22 +31,23 @@
         android:id="@+id/textView_sex"/>
 
     <TextView
+        android:textStyle="bold"
         android:id="@+id/textView_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="4dp"
-
         tools:text="学号：201613137110"/>
 
     <TextView
+        android:textStyle="bold"
         android:id="@+id/textView_grade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="4dp"
-
         tools:text="年级：大二"/>
 
     <TextView
+        android:textStyle="bold"
         android:id="@+id/textView_major"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

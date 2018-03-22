@@ -1,18 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.gongyunhao.sims.AddStudentActivity">
 
+    <include
+        android:id="@+id/title_modify"
+        layout="@layout/title_modify"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="12dp"
+        android:textSize="15sp"
+        android:text="姓名:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <EditText
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"
+        android:padding="6dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginLeft="12dp"
+        android:background="@drawable/shape_interest"
+        android:layout_below="@+id/title_modify"
         android:id="@+id/et_modify_student"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="姓名"/>
+        android:layout_height="36dp" />
+
+    <TextView
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="12dp"
+        android:text="性别"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <RadioGroup
+        android:layout_marginLeft="12dp"
         android:id="@+id/radio_modify_sex"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -20,12 +52,14 @@
         android:orientation="horizontal">
 
         <RadioButton
+            android:textColor="@color/colorDark"
             android:id="@+id/radio_boy"
             android:text="男"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <RadioButton
+            android:textColor="@color/colorDark"
             android:id="@+id/radio_girl"
             android:text="女"
             android:layout_gravity="center"
@@ -34,28 +68,68 @@
 
     </RadioGroup>
 
+    <TextView
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="12dp"
+        android:text="年级:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <EditText
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginLeft="12dp"
+        android:background="@drawable/shape_interest"
+        android:padding="6dp"
         android:id="@+id/et_modify_grade"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/radio_modify_sex"
-        android:hint="年级"/>
+        android:layout_height="36dp"
+        android:layout_below="@id/radio_modify_sex" />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="12dp"
+        android:textSize="15sp"
+        android:text="学号："
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <EditText
+        android:textSize="15sp"
+        android:padding="6dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginLeft="12dp"
+        android:background="@drawable/shape_interest"
         android:id="@+id/et_modify_number"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/et_modify_grade"
-        android:hint="学号"/>
+        android:layout_height="36dp"
+        android:layout_below="@+id/et_modify_grade" />
+
+    <TextView
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="10dp"
+        android:textSize="15sp"
+        android:text="专业："
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <EditText
+        android:textSize="15sp"
+        android:padding="6dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginLeft="12dp"
+        android:background="@drawable/shape_interest"
         android:id="@+id/et_modify_major"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/et_modify_number"
-        android:hint="专业"/>
+        android:layout_height="36dp"
+        android:layout_below="@+id/et_modify_number" />
 
     <com.gongyunhao.sims.FlowLayout
+        android:layout_marginTop="10dp"
         android:id="@+id/flowlayout"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -65,10 +139,14 @@
 
     </com.gongyunhao.sims.FlowLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <Spinner
-        android:layout_marginTop="6dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
         android:id="@+id/spinner_modify_interest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -77,6 +155,12 @@
     </Spinner>
 
     <Button
+        android:layout_marginTop="30dp"
+        android:textColor="@color/ColorWhite"
+        android:layout_marginRight="12dp"
+        android:layout_marginLeft="12dp"
+        android:background="@color/colorAccent"
+        android:layout_gravity="bottom"
         android:id="@+id/btn_modify_yes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -84,4 +168,6 @@
         android:layout_alignParentStart="true"
         android:text="确认修改"/>
 
-</RelativeLayout>
+</LinearLayout>
+
+</ScrollView>
