@@ -1,9 +1,11 @@
 package com.gongyunhao.sims.Activity;
 
 import android.content.Intent;
+import android.provider.SearchRecentSuggestions;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -110,6 +112,7 @@ public class ModifyActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 //                textView.setText("您当前选择的是："+adapter.getItem(position));
+                studentAndInterestBeans.add( new StudentAndInterestBean( studentBean.getStudentNumber(),interestIdAndInterestNameAndInterestCategoryIdBeans.get( position ).getInterestId() ) );
                 final TextView tv = (TextView) mInflater.inflate(
                         R.layout.search_label_tv, mFlowLayout, false);
                 tv.setText(interestIdAndInterestNameAndInterestCategoryIdBeans.get( position ).getInterestName());
@@ -117,6 +120,7 @@ public class ModifyActivity extends AppCompatActivity implements View.OnClickLis
                     @Override
                     public void onClick(View view) {
                         mFlowLayout.removeView( view );
+                        studentAndInterestBeans.remove( studentAndInterestBeans.size()-1 );
                     }
                 });
                 mFlowLayout.addView(tv);
@@ -139,22 +143,37 @@ public class ModifyActivity extends AppCompatActivity implements View.OnClickLis
 
     private void initData() {
         String mnumber=studentBean.getStudentNumber();
+        List<String> mteststr=new ArrayList<>(  );
         for (int i=0;i<studentAndInterestBeans.size();i++){
             if (mnumber.equals( studentAndInterestBeans.get( i ).getStudentNumber() )){
-                for (int j=0;j<interestIdAndInterestNameAndInterestCategoryIdBeans.size();j++){
-                    if (studentAndInterestBeans.get( i ).getInterestId().equals( interestIdAndInterestNameAndInterestCategoryIdBeans.get( j ).getInterestId() )){
-                        final TextView tv = (TextView) mInflater.inflate(
-                                R.layout.search_label_tv, mFlowLayout, false);
-                        tv.setText(interestIdAndInterestNameAndInterestCategoryIdBeans.get( j ).getInterestName());
-                        tv.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                mFlowLayout.removeView( view );
-                            }
-                        });
-                        mFlowLayout.addView(tv);
-                    }
+                //找到了该学生所有的喜欢的兴趣的id编号
+                mteststr.add( studentAndInterestBeans.get( i ).getInterestId() );
+            }
+        }
+
+        for (int m=0;m<mteststr.size();m++){
+            String test=mteststr.get( m );
+            Log.d( "test--->",test );
+            for (int k=0;k<interestIdAndInterestNameAndInterestCategoryIdBeans.size();k++){
+                String testinterest=interestIdAndInterestNameAndInterestCategoryIdBeans.get( k ).getInterestId();
+                Log.d( "testinterest--->",testinterest );
+
+                if (test.equals( testinterest )){
+
+
+                    Log.d( "testModify--->",testinterest );
+                    final TextView tv = (TextView) mInflater.inflate( R.layout.search_label_tv, mFlowLayout, false);
+                    tv.setText(testinterest);
+                    tv.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            mFlowLayout.removeView( view );
+                        }
+                    });
+                    mFlowLayout.addView(tv);
                 }
+
+
             }
         }
 
@@ -188,8 +207,8 @@ public class ModifyActivity extends AppCompatActivity implements View.OnClickLis
                     //save to File
                     FileHelper fileHelper=new FileHelper();
                     fileHelper.saveStudentDataToFile( ModifyActivity.this,mStudentList );
+                    fileHelper.saveStudentAndInterestToFile( ModifyActivity.this,studentAndInterestBeans );
 
-//                    fileHelper.saveStudentAndInterestToFile( ModifyActivity.this, );
                     Toast.makeText( ModifyActivity.this,"修改成功!",Toast.LENGTH_SHORT ).show();
                     finish();
                 }else {
