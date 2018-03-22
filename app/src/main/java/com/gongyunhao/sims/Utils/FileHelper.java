@@ -384,7 +384,7 @@ public class FileHelper {
             if (i<studentAndInterestBeanList.size()-1){
                 datamydata=datamydata+saiBean.getStudentNumber()+" "+ saiBean.getInterestId()+"\n";
             }else {
-                datamydata=datamydata+saiBean.getStudentNumber()+saiBean.getInterestId();
+                datamydata=datamydata+saiBean.getStudentNumber()+" "+saiBean.getInterestId();
             }
         }
 
