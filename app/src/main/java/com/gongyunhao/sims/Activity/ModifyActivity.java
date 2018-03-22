@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -39,6 +40,7 @@ public class ModifyActivity extends AppCompatActivity implements View.OnClickLis
     private RadioGroup radioGroup;
     private Button btn_yes;
     private String sname,snumber,smajor,sgrade;
+    private RadioButton radio_boy,radio_girl;
     private StudentBean studentBean;
     private RecyclerView recycler_interest_detail_modify;
     //定义一个String类型的List数组作为数据源
@@ -62,6 +64,8 @@ public class ModifyActivity extends AppCompatActivity implements View.OnClickLis
         radioGroup=findViewById( R.id.radio_modify_sex );
         btn_yes=findViewById( R.id.btn_modify_yes);
         mspinner=findViewById( R.id.spinner_modify_interest );
+        radio_boy=findViewById( R.id.radio_boy );
+        radio_girl=findViewById( R.id.radio_girl );
         btn_yes.setOnClickListener( this );
         radioGroup.setOnCheckedChangeListener( this );
 
@@ -95,6 +99,12 @@ public class ModifyActivity extends AppCompatActivity implements View.OnClickLis
             dataList.add( interestIdAndInterestNameAndInterestCategoryIdBeans.get( i ).getInterestName() );
         }
 
+        if (isboy){
+            radio_boy.setChecked( true );
+        }else {
+            radio_girl.setChecked( true );
+        }
+
         initFlowView();
 
 
@@ -108,6 +118,7 @@ public class ModifyActivity extends AppCompatActivity implements View.OnClickLis
         //为spinner绑定我们定义好的数据适配器
         mspinner.setAdapter(adapter);
         //为spinner绑定监听器，这里我们使用匿名内部类的方式实现监听器
+        mspinner.setSelection( 0,true );
         mspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -158,16 +169,16 @@ public class ModifyActivity extends AppCompatActivity implements View.OnClickLis
                 String testinterest=interestIdAndInterestNameAndInterestCategoryIdBeans.get( k ).getInterestId();
                 Log.d( "testinterest--->",testinterest );
 
-                if (test.equals( testinterest )){
-
+                if (test.trim().equals( testinterest.trim() )){
 
                     Log.d( "testModify--->",testinterest );
                     final TextView tv = (TextView) mInflater.inflate( R.layout.search_label_tv, mFlowLayout, false);
-                    tv.setText(testinterest);
+                    tv.setText(interestIdAndInterestNameAndInterestCategoryIdBeans.get( k ).getInterestName());
                     tv.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             mFlowLayout.removeView( view );
+                            studentAndInterestBeans.remove( studentAndInterestBeans.size()-1 );
                         }
                     });
                     mFlowLayout.addView(tv);
